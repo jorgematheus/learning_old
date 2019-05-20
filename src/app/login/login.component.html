@@ -1,0 +1,40 @@
+<div class="ui container">
+    <sui-modal size="tiny" [isClosable]="false" (dismissed)="alert($event)" #modal>        
+        <div class="content">  
+                <h2 class="description-login ui teal image header">
+                    <i style=" font-size: 2.5rem !important;" class="graduation cap icon"></i>
+                        <!--<img src="assets/icons/graduation-cap-solid.svg" class="image">-->
+                        <div class="content">
+                          E-learning
+                        </div>
+                      </h2>              
+            
+            <form class="ui form" [formGroup]="form" (ngSubmit)="efetivarLogin()">
+                <div class="field">  
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>                  
+                        <input data-login type="text" formControlName="email" placeholder="E-mail">
+                    </div>
+                    <div 
+                        *ngIf="!form.controls.email.valid && form.controls.email.touched" 
+                        class="ui pointing red basic label">
+                        Preencha um e-mail válido!
+                    </div>
+                </div>
+                <div class="field"> 
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input data-login type="password" formControlName="senha" placeholder="Senha">
+                    </div>                     
+                    <div 
+                        *ngIf="!form.controls.senha.valid && form.controls.senha.touched" 
+                        class="ui pointing red basic label">
+                        Campo Senha deve ter no mínimo 6 caracteres!
+                    </div>
+                </div>
+                <!--button [disabled]="!form.valid ? 'disabled' : ''" class="ui button" type="submit">Entrar</button-->
+                <button type="submit" class="ui fluid large teal button">Login</button>
+            </form>
+        </div>        
+    </sui-modal>
+</div>

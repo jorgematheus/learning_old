@@ -1,0 +1,40 @@
+<div class="ui container">
+  <div class="ui stackable column grid geral">
+      <div class="sixteen wide column">
+        <app-breadcrumb [paginaAtiva]="'user'"></app-breadcrumb>
+      </div>     
+      <div class="ui container">  
+        <h2 class="ui horizontal divider header">
+            <i class="users chart icon"></i>
+            Usuários
+        </h2>
+        <button class="ui active button">
+            <i class="user icon"></i>
+            Novo
+          </button> 
+        <div class="list">
+          <br>
+            <div class="ui items">
+                <div *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }" class="item">
+                  <a class="ui tiny image">
+                    <img src="assets/imagens/avatar/stevie.jpg">
+                  </a>
+                  <div class="content">
+                    <a class="header">Stevie Feliciano</a>
+                    <div class="description">
+                      <p>Stevie Feliciano is a <a>library scientist</a> living in New York City. She likes to spend her time reading, running, and writing.</p>
+                    </div>
+                    <button class="ui icon button right floated negative">
+                        <i class="trash alternate icon"></i>
+                    </button>                                         
+                  </div>
+                  <hr>             
+                </div>                           
+              </div> <!--fim do loop--> 
+              
+          <pagination-controls maxSize="7" previousLabel="Anterior" nextLabel="Próxima" (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>          
+    </div> <!--fim coluna geral-->
+</div> <!--fim container geral-->
+   

@@ -1,0 +1,92 @@
+<div class="ui grid">	
+    <div class="computer only row">
+        <div class="column">
+            <div class="ui inverted pointing menu">
+                <div class="header item"><span><a style="color: #fff !important" [routerLink]="['/home']"><i class="fas fa-graduation-cap fa-fw"></i> E-learning</a></span></div>   
+                <div class="ui pointing dropdown link item menu-admin" suiDropdown>
+                    <span class="text"><i class="cogs icon"></i> Administração</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu" suiDropdownMenu>
+                        <a style="color: #FF8C00 !important" class="item"><i class="fas fa-users fa-fw"></i> Grupos de Usuários</a>
+                        <a style="color: #FF8C00 !important" class="item"><i class="fas fa-trash-alt fa-fw"></i> Lixeira</a>                                       
+                    </div>
+                </div> <!--dropdown Administração-->
+                <div class="ui pointing dropdown link item menu-conteudo" suiDropdown>
+                    <span class="text"><i class="book icon"></i>Conteúdos</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu" suiDropdownMenu>
+                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Turmas</a>
+                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Cursos</a>
+                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-clipboard-list fa-fw"></i> Aulas</a>
+                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-pen fa-fw"></i> Conteúdos</a>                                    
+                    </div>
+                </div> <!--dropdown Conteúdos-->                
+                <div class="menu-usuario">
+                    <a class="item" [routerLink]="['/users']"><i class="user icon"> </i>Usuários</a>  
+                </div>                            
+                <div class="ui pointing dropdown link item menu-relatorio" suiDropdown>
+                    <span class="text"> <i class="file alternate icon"></i> Relatórios</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu" suiDropdownMenu>
+                        <a style="color: #E91E63 !important" class="item" href="#">Cursos Criados</a>
+                        <a style="color: #E91E63 !important" class="item" href="#">Cursos em Andamento</a>
+                        <a style="color: #E91E63 !important" class="item" href="#">Usuários</a>                                 
+                    </div>
+                </div> <!--dropdown Relatórios-->
+                <div class="right menu">
+                    <a class="item">Meu Perfil</a>
+                    <a class="item" title="Sair"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div> <!--uiMenu-->
+        </div>
+    </div>
+    <div class="tablet mobile only row">
+        <div class="column">
+            <div class="ui inverted menu">
+                <a  (click)="toggleMenuMobile()" id="mobile_item" class="item"><i class="bars icon"></i></a>
+            </div>
+        </div>
+    </div>    
+</div> <!--fim grid-->
+
+ <!--menu mobile-->  
+<div #elementC  class="ui inverted  sidebar vertical menu menu-mobile">
+    <a class="item" [routerLink]="['/home']"><i class="fas fa-home fa-fw"></i> Home</a> 
+    <div class="ui pointing dropdown link item menu-admin" suiDropdown>
+        <span class="text"><i class="fas fa-cog fa-fw"></i> Administração</span>
+        <i class="dropdown icon"></i> <br> <br>
+        <div suiDropdownMenu>
+            <a style="color: #FF8C00 !important" class="item"><i class="fas fa-users fa-fw"></i> Grupos de Usuários</a>
+            <a style="color: #FF8C00 !important" class="item"><i class="fas fa-trash-alt fa-fw"></i> Lixeira</a>                                       
+        </div>
+    </div> <!--dropdown Administração-->
+    <div class="ui pointing dropdown link item menu-conteudo" suiDropdown>
+        <span class="text"><i class="fas fa-book fa-fw"></i> Conteúdos</span>
+        <i class="dropdown icon"></i> <br> <br>
+        <div suiDropdownMenu>
+            <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Turmas</a>
+            <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Cursos</a>
+            <a style="color: #339AF0 !important" class="item"><i class="fas fa-clipboard-list fa-fw"></i> Aulas</a>
+            <a style="color: #339AF0 !important" class="item"><i class="fas fa-pen fa-fw"></i> Conteúdos</a>                                    
+        </div>
+    </div> <!--dropdown Conteúdos-->
+    <div class="menu-usuario">
+        <a class="item" [routerLink]="['/users']"><i class="fas fa-user fa-fw"> </i> Usuários</a>
+    </div>                  
+    <div class="ui pointing dropdown link item menu-relatorio" suiDropdown>
+        <span class="text"> <i class="fas fa-file-export"></i> Relatórios</span>
+        <i class="dropdown icon"></i> <br><br>
+        <div suiDropdownMenu>
+            <a style="color: #E91E63 !important" class="item" >Cursos Criados</a>
+            <a style="color: #E91E63 !important" class="item" >Cursos em Andamento</a>
+            <a style="color: #E91E63 !important" class="item" >Usuários</a>                                 
+        </div>
+    </div> <!--dropdown Relatórios-->
+    <div>
+        <a class="item">Meu Perfil</a>
+        <a class="item" title="Sair"><i class="fas fa-sign-out-alt"></i> Sair</a>
+    </div>
+</div> <!--menu mobile-->
+            
+    
+

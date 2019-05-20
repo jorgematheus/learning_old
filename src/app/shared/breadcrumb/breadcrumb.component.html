@@ -1,0 +1,7 @@
+
+<div class="ui tiny breadcrumb">
+    <div *ngIf="paginaAtiva == 'home'" class="active section"><i class="fas fa-home"></i> Home</div>
+    <a [routerLink]="['/home']" *ngIf="paginaAtiva != 'home'" class="section"><i class="fas fa-home"></i> Home</a>
+    <i [class]="paginaAtiva == 'home' ? 'invisible' : 'right chevron icon divider'"></i>
+    <div *ngIf="paginaAtiva == 'user'" class="active section">Usuários</div>    
+</div>

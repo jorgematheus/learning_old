@@ -1,0 +1,43 @@
+$admin-color: #FF8C00 !important;
+$conteudo-color: #339AF0 !important;
+$usuario-color: #4CAF50 !important;
+$relatorio-color: #E91E63 !important;
+
+.ui.menu {
+    border-radius: 0;
+    margin-bottom: 50px;
+}
+
+.menu-mobile {
+    margin-top: 40px !important;
+    height: 285px !important;
+}
+
+@media screen and (min-width: 769px) {
+    .menu-mobile {
+        display: none!important;
+    }
+
+}
+
+.menu-admin {
+    i, span, .menu-admin-item { color: $admin-color;  }
+} /* Admin */
+
+.menu-conteudo {
+    i, span {
+        color: $conteudo-color;
+    }
+}
+
+.menu-usuario {
+    i, a {
+        color: $usuario-color;
+    }
+}
+
+.menu-relatorio {
+    i, span {
+        color: $relatorio-color;
+    }
+}
