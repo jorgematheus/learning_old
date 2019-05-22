@@ -3,5 +3,10 @@
     <div *ngIf="paginaAtiva == 'home'" class="active section"><i class="fas fa-home"></i> Home</div>
     <a [routerLink]="['/home']" *ngIf="paginaAtiva != 'home'" class="section"><i class="fas fa-home"></i> Home</a>
     <i [class]="paginaAtiva == 'home' ? 'invisible' : 'right chevron icon divider'"></i>
-    <div *ngIf="paginaAtiva == 'user'" class="active section">Usuários</div>    
+    <div *ngIf="paginaAtiva == '/users'" class="active section">Usuários</div>  
+    <ng-template [ngIf]="paginaAtiva == '/users/new'">
+        <a [routerLink]="['/users']" class="section">Usuários</a>
+        <i class="right chevron icon divider"></i>
+        <div class="section active">Novo</div> 
+    </ng-template>      
 </div>

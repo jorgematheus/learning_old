@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -8,14 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  collection = [];
-  constructor() {
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push(`item ${i}`);
-    }
+  route: string;
+
+  constructor(private location: Location, router: Router) {
+    router.events.subscribe((val) => {
+      this.route = this.location.path();
+      console.log(this.route)
+    })   
+
   }
+ 
 
   ngOnInit() {
+   
   }
+
+
 
 }

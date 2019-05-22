@@ -12,7 +12,10 @@ import { TopoComponent } from './topo/topo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component'
+import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
+import { NovoUsuarioComponent } from './usuarios/novo-usuario/novo-usuario.component';
+import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
+
 
  
 
@@ -24,7 +27,7 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component'
     RodapeComponent,
     HomeComponent,
     UsuariosComponent,    
-    BreadcrumbComponent
+    BreadcrumbComponent, NovoUsuarioComponent, ListaUsuariosComponent
   ],
   imports: [
     BrowserModule,

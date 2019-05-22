@@ -1,0 +1,32 @@
+<div class="ui container">  
+  <h2 class="ui horizontal divider header">
+      <i class="users chart icon"></i>
+      Cadastar Novo Usuário
+  </h2>
+  <form [formGroup]="formNovoUsuario" class="ui form">
+    <h4 class="ui dividing header">Shipping Information</h4>
+    <div class="field">
+      <label>Name</label>
+      <div class="two fields">
+        <div class="field">
+          <input type="text" name="shipping[first-name]" placeholder="First Name">
+        </div>
+        <div class="field">
+          <input type="text" name="shipping[last-name]" placeholder="Last Name">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Billing Address</label>
+      <div class="fields">
+        <div class="twelve wide field">
+          <input type="text" name="shipping[address]" placeholder="Street Address">
+        </div>
+        <div class="four wide field">
+          <input type="text" name="shipping[address-2]" placeholder="Apt #">
+        </div>
+      </div>
+    </div>    
+    <div class="ui button" tabindex="0">Cadastrar</div>
+  </form>
+</div>  

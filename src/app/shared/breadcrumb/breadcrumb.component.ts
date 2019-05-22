@@ -10,10 +10,10 @@ export class BreadcrumbComponent implements OnInit {
   @Input('paginaAtiva') public paginaAtiva;
   
 
-  constructor() { }
+  constructor() {   }
 
   ngOnInit() {
-    
+    console.log('pagina ativa: ', this.paginaAtiva)
   }
 
   public  makeBreadcrumb(): void {
