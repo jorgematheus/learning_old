@@ -1,3 +1,31 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$learning-primary: mat-palette($mat-indigo);
+$learning-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$learning-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$learning-theme: mat-light-theme($learning-primary, $learning-accent, $learning-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($learning-theme);
+
 /* You can add global styles to this file, and also import other style files */
 html, body { height: auto; background-color: #F8F9FA; }
 
@@ -8,16 +36,17 @@ html, body { height: auto; background-color: #F8F9FA; }
     margin-bottom: 30px !important;
     padding: 5px !important;
 }
-input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched, .dropdown.ng-invalid.ng-touched {
     background-color: #FFF6F6 !important;
     border-color: #E0B4B4!important;
     color: #9F3A38 !important;
 }
 
 input.ng-valid.ng-touched:not([data-login]), select.ng-valid.ng-touched:not([data-login]) {
-    background-color:transparent !important;
-    border-color: #21BA45 !important;    
+    /*background-color:transparent !important;
+    border-color: #21BA45 !important;    */
 }
+
 
 
 
@@ -31,4 +60,47 @@ input.ng-valid.ng-touched:not([data-login]), select.ng-valid.ng-touched:not([dat
 
 .text-left {
     text-align: left;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.mat-input-element{
+    /*font: inherit;
+    background: 0 0 !important;
+    color: currentColor !important;
+    border: none !important;
+    outline: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100%;
+    vertical-align: bottom !important;
+    text-align: inherit;*/
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    transform: translateY(30%);
+    width: 2em !important;
+    
+
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0px !important;
+}
+
+.mat-form-field-infix {
+    padding: 0.5em 0;
+     border-top: 0 solid transparent; 
+    
+    bottom: 5px;
+}
+
+
+//Data de nascimento (zerando a borda)
+.selectiongroup input {
+    border: none !important
 }

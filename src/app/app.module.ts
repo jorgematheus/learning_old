@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,10 +19,15 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { NovoUsuarioComponent } from './usuarios/novo-usuario/novo-usuario.component';
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { MyDatePickerModule } from 'mydatepicker';
 
 
- 
+/* Angular Material  */
+import {MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatIconModule } from '@angular/material';
 
+registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,16 +36,26 @@ import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios
     RodapeComponent,
     HomeComponent,
     UsuariosComponent,    
-    BreadcrumbComponent, NovoUsuarioComponent, ListaUsuariosComponent
+    BreadcrumbComponent, 
+    NovoUsuarioComponent, 
+    ListaUsuariosComponent    
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,   
     AppRoutingModule,
     ReactiveFormsModule,
     SuiModule,
-    NgxPaginationModule
-  ],
-  providers: [],
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+     MatInputModule, 
+     MatFormFieldModule ,
+     MatIconModule,
+     MyDatePickerModule
+    
+  ], 
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
