@@ -15,10 +15,10 @@
                     <span class="text"><i class="book icon"></i>Conteúdos</span>
                     <i class="dropdown icon"></i>
                     <div class="menu" suiDropdownMenu>
-                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Turmas</a>
-                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Cursos</a>
-                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-clipboard-list fa-fw"></i> Aulas</a>
-                        <a style="color: #339AF0 !important" class="item"><i class="fas fa-pen fa-fw"></i> Conteúdos</a>                                    
+                        <a style="color: #339AF0 !important" [routerLink]="['/classes']" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Turmas</a>
+                        <a style="color: #339AF0 !important" [routerLink]="['/courses']" class="item"><i class="fas fa-chalkboard-teacher fa-fw"></i> Cursos</a>
+                        <a style="color: #339AF0 !important" [routerLink]="['/lessons']" class="item"><i class="fas fa-clipboard-list fa-fw"></i> Aulas</a>
+                        <a style="color: #339AF0 !important" [routerLink]="['/contents']" class="item"><i class="fas fa-pen fa-fw"></i> Conteúdos</a>                                    
                     </div>
                 </div> <!--dropdown Conteúdos-->                
                 <div class="menu-usuario">

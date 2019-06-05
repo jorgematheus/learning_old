@@ -36,11 +36,11 @@ html, body { height: auto; background-color: #F8F9FA; }
     margin-bottom: 30px !important;
     padding: 5px !important;
 }
-input.ng-invalid.ng-touched, .dropdown.ng-invalid.ng-touched {
+/*input.ng-invalid.ng-touched, .dropdown.ng-invalid.ng-touched {
     background-color: #FFF6F6 !important;
     border-color: #E0B4B4!important;
     color: #9F3A38 !important;
-}
+}*/
 
 input.ng-valid.ng-touched:not([data-login]), select.ng-valid.ng-touched:not([data-login]) {
     /*background-color:transparent !important;

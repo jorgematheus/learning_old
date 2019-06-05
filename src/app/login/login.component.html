@@ -1,5 +1,5 @@
-<div class="ui container">
-    <sui-modal size="tiny" [isClosable]="false" (dismissed)="alert($event)" #modal>        
+<div  class="ui container" #modalTemp>
+    <sui-modal *ngIf="1===3"  size="tiny" [isClosable]="false" (dismissed)="alert($event)" #modal>        
         <div class="content">  
                 <h2 class="description-login ui teal image header">
                     <i style=" font-size: 2.5rem !important;" class="graduation cap icon"></i>

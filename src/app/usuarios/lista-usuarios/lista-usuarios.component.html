@@ -10,21 +10,26 @@
   <div class="list">
     <br>
       <div class="ui items">
-          <div *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }" class="item">
-            <a class="ui tiny image">
-              <img src="assets/imagens/avatar/stevie.jpg">
-            </a>
-            <div class="content">
-              <a class="header">Stevie Feliciano</a>
-              <div class="description">
-                <p>Stevie Feliciano is a <a>library scientist</a> living in New York City. She likes to spend her time reading, running, and writing.</p>
+          <ng-container *ngFor="let user of collection | paginate: { itemsPerPage: 5, currentPage: p }">
+            <div #{item.id} [id]="user.id" class="item">
+              <a class="ui tiny image">
+                <img src="assets/imagens/avatar/stevie.jpg">
+              </a>
+              <div class="content">
+                <a class="header">{{ user.nome }}</a>
+                <div class="description">
+                  <p [innerHTML]="users.description"></p>
+                </div>                 
+                <button class="ui icon button right floated negative" (click)="excluir(user.id, user.nome)">
+                 <i class="trash alternate icon"></i>
+                </button>  
+                <button class="ui icon button right floated teal" [routerLink]="['/users/edit', user.id]">
+                  <i class="edit outline icon"></i>
+                 </button>                                        
               </div>
-              <button class="ui icon button right floated negative">
-                  <i class="trash alternate icon"></i>
-              </button>                                         
-            </div>
-            <hr>             
-          </div>                           
+              <hr>        
+            </div>     
+          </ng-container>                           
         </div> <!--fim do loop--> 
         
     <pagination-controls maxSize="7" previousLabel="Anterior" nextLabel="Próxima" (pageChange)="p = $event"></pagination-controls>

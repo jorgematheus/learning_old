@@ -40,15 +40,15 @@
       <div class="required field">
         <label for="senha">Senha</label>
         <input type="password" #senha placeholder="Digite a senha" formControlName="senha">
+        
       </div>
     </div>     
      <div class="two fields">
         <div class="required field">
           <label for="senha">Confirmação de Senha</label>
-          <input type="password" (blur)="confirmarSenha()" placeholder="Confirme a senha" formControlName="confirmarSenha">
+          <input type="password" placeholder="Confirme a senha" [class]="!senhasIguais() ? 'ng-invalid' : ''" formControlName="confirmarSenha">
         </div>
-     </div>
-    
+     </div>    
     <h4 class="ui dividing header">Informações Administrativas</h4>  
     <div class="six wide column required field">
         <label for="email">Tipo de Usuário</label>
@@ -71,6 +71,6 @@
         </div>
       
     <button type="submit" class="ui button" tabindex="0">Cadastrar</button>    
-  </form>
+  </form>   
 </div>
 

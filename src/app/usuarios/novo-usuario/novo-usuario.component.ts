@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {IMyDpOptions} from 'mydatepicker';
+import { IMyDpOptions } from 'mydatepicker';
 import { Usuario } from '../../models/usuario.model';
 
 
@@ -12,8 +12,7 @@ import { Usuario } from '../../models/usuario.model';
 })
 export class NovoUsuarioComponent implements OnInit {
 
-
-  public myDatePickerOptions: IMyDpOptions = {
+    public myDatePickerOptions: IMyDpOptions = {
     // other options...
     showTodayBtn: false,   
     dateFormat: 'dd/mm/yyyy'
@@ -28,8 +27,8 @@ public model: any = { date: { year: 2018, month: 10, day: 9 } };
     email: new FormControl(null, [Validators.required, Validators.email]),
     celular: new FormControl(null),
     dataNascimento: new FormControl(null, [Validators.required]),
-    senha: new FormControl(null, [Validators.required]),
-    confirmarSenha: new FormControl(null, {  
+    senha: new FormControl('', [Validators.required]),
+    confirmarSenha: new FormControl('', {  
       updateOn: 'blur',
       validators: [Validators.required]
     }),
@@ -37,12 +36,25 @@ public model: any = { date: { year: 2018, month: 10, day: 9 } };
   });
 
   public imageSrc; 
-
   public filteredOptions = [ 'opção 1', 'opção2', 'opção3' ]
-  constructor() { }
+
+  constructor() {  }
 
   ngOnInit() {
+    
   }
+ 
+  public senhasIguais(): boolean {
+    let form = this.formNovoUsuario,
+        senha = form.get('senha').value,
+        confirmarSenha = form.get('confirmarSenha').value;
+
+       
+
+    return senha == confirmarSenha ? true : false;    
+
+  } 
+  
 
   readURL(event: any): void {
     if (event.target.files && event.target.files[0]) {
@@ -53,31 +65,15 @@ public model: any = { date: { year: 2018, month: 10, day: 9 } };
     }
   }
 
-  public confirmarSenha() {
-
-    let form = this.formNovoUsuario;
-   
-    let pass = this.formNovoUsuario;
-    //let confirmPass = this.formNovoUsuario.value.confirmarSenha;
-
-
-    console.log(pass)
-
-      
-
-  
-    //return pass === confirmPass ? null : { notSame: true }     
-
-  }
 
   public validarFormulario(): void {
     console.log(this.formNovoUsuario)
     let form = this.formNovoUsuario;    
-    form.controls.nome.markAsTouched();
-    form.controls.email.markAsTouched();    
-    form.controls.senha.markAsTouched();
-    form.controls.confirmarSenha.markAsTouched();
-    form.controls.tipoUsuario.markAsTouched();
+    form.get('nome').markAsTouched();
+    form.get('email').markAsTouched();    
+    form.get('senha').markAsTouched();
+    form.get('confirmarSenha').markAsTouched();
+    form.get('tipoUsuario').markAsTouched();
 
     let usuario: Usuario = new Usuario(      
       form.value.foto,
@@ -90,6 +86,11 @@ public model: any = { date: { year: 2018, month: 10, day: 9 } };
     )
     
     console.log(usuario)
+    if(this.senhasIguais()) {
+      console.log('senhas iguais: ', this.senhasIguais())
+    } else {
+      console.log('senhas diferentes: ', this.senhasIguais())
+    }
   }
 
 }

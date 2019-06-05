@@ -6,7 +6,6 @@ export class Usuario {
         celular: string,
         dataNascimento: string,
         senha: string,
-        tipoUsuario: number
-        
+        tipoUsuario: number        
     ){}
 }

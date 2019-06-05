@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -8,18 +11,27 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  @ViewChild('modal') public modal;
 
   public form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.minLength(5)]),
     senha: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
   
-  constructor() { }
+  route: string;
+
+  constructor(private location: Location, private router: Router) { }
 
   ngOnInit() {  
     
   }
+
+  ngOnDestroy() {
+    //this.modal.dismissed()
+  }
+
 
   public efetivarLogin(): void {
     console.log(this.form)
@@ -31,7 +43,10 @@ export class LoginComponent implements OnInit {
 
     if(this.form.valid) {
       console.log('validado')      
-    }
+    }     
+
+    this.router.navigate(['/home'])
+
   }
 
 }

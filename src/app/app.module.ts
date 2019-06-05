@@ -20,12 +20,23 @@ import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { NovoUsuarioComponent } from './usuarios/novo-usuario/novo-usuario.component';
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import { MyDatePickerModule } from 'mydatepicker';
+
 
 
 /* Angular Material  */
 import {MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatIconModule } from '@angular/material';
+import { TestService } from './shared/test.service';
+import { ConteudosComponent } from './conteudos/conteudos.component';
+import { ConteudoComponent } from './conteudos/conteudo/conteudo.component';
+import { AulasComponent } from './conteudos/aulas/aulas.component';
+import { CursosComponent } from './conteudos/cursos/cursos.component';
+import { TurmasComponent } from './conteudos/turmas/turmas.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
+import { UsuarioFormularioComponent } from './shared/usuario-formulario/usuario-formulario.component';
+
+
+
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -38,7 +49,7 @@ registerLocaleData(localePt, 'pt-BR');
     UsuariosComponent,    
     BreadcrumbComponent, 
     NovoUsuarioComponent, 
-    ListaUsuariosComponent    
+    ListaUsuariosComponent, ConteudosComponent, ConteudoComponent, AulasComponent, CursosComponent, TurmasComponent, EditarUsuarioComponent, UsuarioFormularioComponent  
   ],
   imports: [
     BrowserModule,   
@@ -55,7 +66,7 @@ registerLocaleData(localePt, 'pt-BR');
      MyDatePickerModule
     
   ], 
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [TestService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

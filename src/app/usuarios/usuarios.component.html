@@ -3,7 +3,17 @@
       <div class="sixteen wide column">
         <app-breadcrumb [paginaAtiva]="route"></app-breadcrumb>
       </div>     
-      <router-outlet></router-outlet>   
-  </div> <!--fim coluna geral-->   
+      <router-outlet (activate)="onActivate($event)"></router-outlet>   
+  </div> <!--fim coluna geral--> 
+  <ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="header">Excluir Usuário</div>
+    <div class="content">
+        <p>{{ context.data }}</p>
+    </div>
+    <div class="actions">        
+        <button class="ui green button" (click)="modal.deny('denied')" autofocus>Cancelar</button>
+        <button class="ui red button" (click)="modal.approve('approved')">Excluir</button>
+    </div>
+</ng-template>
 </div> <!--fim container geral-->
    
