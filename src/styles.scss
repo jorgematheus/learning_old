@@ -104,3 +104,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .selectiongroup input {
     border: none !important
 }
+
+//configuração de toast (notificação)
+#toastr-container > div.toastr {
+    padding: 5px 10px 10px 60px !important;
+}
+
+#toastr-container > .toastr-info{
+    background-color: #2F96B4;
+}

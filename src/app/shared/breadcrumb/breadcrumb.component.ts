@@ -7,19 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BreadcrumbComponent implements OnInit {
 
-  @Input('paginaAtiva') public paginaAtiva;
-  
+  @Input('paginaAtiva') public paginaAtiva; 
 
   constructor() {   }
 
-  ngOnInit() {
-    console.log('pagina ativa: ', this.paginaAtiva)
-  }
-
-  public  makeBreadcrumb(): void {
-
-    
-
-  }
+  ngOnInit() { }  
 
 }

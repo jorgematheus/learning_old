@@ -21,21 +21,35 @@ import { NovoUsuarioComponent } from './usuarios/novo-usuario/novo-usuario.compo
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MyDatePickerModule } from 'mydatepicker';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
+/* Serviços */
+import { TestService } from './shared/test.service';
 
 
 /* Angular Material  */
 import {MatNativeDateModule, MatDatepickerModule, MatInputModule, MatFormFieldModule, MatIconModule } from '@angular/material';
-import { TestService } from './shared/test.service';
-import { ConteudosComponent } from './conteudos/conteudos.component';
+
 import { ConteudoComponent } from './conteudos/conteudo/conteudo.component';
 import { AulasComponent } from './conteudos/aulas/aulas.component';
 import { CursosComponent } from './conteudos/cursos/cursos.component';
 import { TurmasComponent } from './conteudos/turmas/turmas.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { UsuarioFormularioComponent } from './shared/usuario-formulario/usuario-formulario.component';
-
-
+import { NotificacaoService } from './shared/notificacao.service';
+import { ModalComponent } from './shared/modal/modal.component';
+import { ListaConteudosComponent } from './conteudos/conteudo/lista-conteudos/lista-conteudos.component';
+import { NovoConteudoComponent } from './conteudos/conteudo/novo-conteudo/novo-conteudo.component';
+import { EditarConteudoComponent } from './conteudos/conteudo/editar-conteudo/editar-conteudo.component';
+import { ListaAulasComponent } from './conteudos/aulas/lista-aulas/lista-aulas.component';
+import { NovaAulaComponent } from './conteudos/aulas/nova-aula/nova-aula.component';
+import { EditarAulaComponent } from './conteudos/aulas/editar-aula/editar-aula.component';
+import { ListaCursosComponent } from './conteudos/cursos/lista-cursos/lista-cursos.component';
+import { NovoCursoComponent } from './conteudos/cursos/novo-curso/novo-curso.component';
+import { EditarCursoComponent } from './conteudos/cursos/editar-curso/editar-curso.component';
+import { ListaTurmasComponent } from './conteudos/turmas/lista-turmas/lista-turmas.component';
+import { NovaTurmaComponent } from './conteudos/turmas/nova-turma/nova-turma.component';
+import { EditarTurmaComponent } from './conteudos/turmas/editar-turma/editar-turma.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -49,7 +63,8 @@ registerLocaleData(localePt, 'pt-BR');
     UsuariosComponent,    
     BreadcrumbComponent, 
     NovoUsuarioComponent, 
-    ListaUsuariosComponent, ConteudosComponent, ConteudoComponent, AulasComponent, CursosComponent, TurmasComponent, EditarUsuarioComponent, UsuarioFormularioComponent  
+    ListaUsuariosComponent, ConteudoComponent, AulasComponent, CursosComponent, TurmasComponent, EditarUsuarioComponent, UsuarioFormularioComponent, ModalComponent, ListaConteudosComponent, NovoConteudoComponent, EditarConteudoComponent, ListaAulasComponent, NovaAulaComponent, EditarAulaComponent, ListaCursosComponent, NovoCursoComponent, EditarCursoComponent, ListaTurmasComponent, NovaTurmaComponent, EditarTurmaComponent
+      
   ],
   imports: [
     BrowserModule,   
@@ -60,13 +75,17 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-     MatInputModule, 
-     MatFormFieldModule ,
-     MatIconModule,
-     MyDatePickerModule
+    MatInputModule, 
+    MatFormFieldModule ,
+    MatIconModule,
+    MyDatePickerModule,
+    ToastrModule.forRoot()
     
   ], 
-  providers: [TestService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
+  entryComponents: [ModalComponent],
+  providers: [NotificacaoService, TestService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { Observable, Observer } from 'rxjs';
-import { ModalTemplate, SuiModal, SuiModalService, TemplateModalConfig, ModalSize } from 'ng2-semantic-ui';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { SuiModalService } from 'ng2-semantic-ui';
 import { TestService } from '../shared/test.service';
+import { ConfirmModal } from '../shared/modal/modal.component';
+import { RouterBreadcrumb } from '../helpers/router-breadcrumb';
+
 
 export interface IContext {
   data: string;
@@ -12,63 +13,48 @@ export interface IContext {
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.scss']
+  styleUrls: ['./usuarios.component.scss'],
+  providers: [RouterBreadcrumb]
 })
-export class UsuariosComponent implements OnInit {  
-  @ViewChild('modalTemplate') 
-  public modalTemplate: ModalTemplate<IContext, string, string>
-  public route: string;
+export class UsuariosComponent implements OnInit {    
+  public routeBreadcrumb: string;
   
   //variáveis para recuperar dados do usuário a ser excluído
   public id: number;
   public name: string;
  
-  constructor(private location: Location, 
-    router: Router, 
+  constructor( 
+    private router: Router, 
     public modalService: SuiModalService,
     public testService: TestService,
-    public activate: ActivatedRoute) {
-    router.events.subscribe((val) => {
-      //pega a rota ativa no momento
-      this.route = this.location.path();       
-    })   
-    
-  }
+    public RouterBreadcrumb: RouterBreadcrumb
+    ) 
+    {  
+      this.router.events.subscribe(() => {  
+        let url = this.router.url;
+        this.routeBreadcrumb = RouterBreadcrumb.getUrlBreadCrumb(url);
+      });
+    }  
 
-  ngOnInit() {    
-  }
+    ngOnInit() { }
   
-  public openModal(conteudoDinamico: string = `Deseja realmente excluir o usuário ${this.name} ?`) {
-    
-    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate)
-   
-    config.size = 'mini'; 
-    config.context = { data: conteudoDinamico };
-
+  public openModal() {         
     this.modalService
-        .open(config)
-        .onApprove(result => {  
-          this.testService.idUsuario(this.id)           
-        })
-        .onDeny(result => { console.log(result) })      
+      .open(new ConfirmModal("Excluir Usuário", `Deseja realmente excluir o usuário ${this.name} ?`))
+      .onApprove(() => this.testService.idUsuario(this.id) )
+      .onDeny(result => { console.log(result )});
 
   } 
 
   //captura  o componente ativo no router-outlet
   onActivate(componentReference) {
-     console.log('Componente de referencia: ', componentReference)     
-     if(componentReference.excluirUsuario) {
-       componentReference.excluirUsuario.subscribe((data) => {         
-         this.id = data.id;
-         this.name = data.name;         
-         this.openModal();         
-       })
-      }
+  console.log('Componente de referencia: ', componentReference)     
+    if(componentReference.excluirUsuario) {
+      componentReference.excluirUsuario.subscribe((data) => {         
+        this.id = data.id;
+        this.name = data.name;         
+        this.openModal();         
+      })
+    }
   }
- 
-
-  
-
-
-
 }

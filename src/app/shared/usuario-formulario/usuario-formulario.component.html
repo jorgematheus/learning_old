@@ -1,8 +1,7 @@
-
 <div class="ui container">  
     <h2 class="ui horizontal divider header">
         <i class="users chart icon"></i>
-         Novo Usuário
+        {{titulo}}
     </h2>
     <form autocomplete="off" [formGroup]="formUsuario" class="ui form" (ngSubmit)="validarForm()">
       <h4 class="ui dividing header">Informações Pessoais</h4> 
@@ -72,9 +71,15 @@
         </div>
       </div>     
        <div class="two fields">
-          <div class="required field">
+          <div class="required field" [ngClass]="{ 'error': f.confirmarSenha.touched && f.confirmarSenha.errors }">
             <label for="senha">Confirmação de Senha</label>
             <input type="password" placeholder="Confirme a senha"  formControlName="confirmarSenha">
+            <div *ngIf="f.confirmarSenha.touched && f.confirmarSenha.errors" class="message-error">
+              <div *ngIf="f.confirmarSenha.errors.required"> 
+                Campo confirmar senha é de preenchimento obrigatório!
+              </div>
+              <div *ngIf="f.confirmarSenha.errors.mustMatch">As senhas devem ser iguais!</div>
+            </div>  
           </div>
        </div>    
       <h4 class="ui dividing header">Informações Administrativas</h4>  

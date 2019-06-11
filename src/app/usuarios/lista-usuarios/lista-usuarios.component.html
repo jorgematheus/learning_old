@@ -3,7 +3,7 @@
       <i class="users chart icon"></i>
       Usuários
   </h2>
-  <a routerLink="/users/new" class="ui primary basic button">
+  <a [routerLink]="['/users/new']" class="ui primary basic button">
     <i class="icon user"></i>
     Novo Usuário
   </a>
@@ -11,21 +11,29 @@
     <br>
       <div class="ui items">
           <ng-container *ngFor="let user of collection | paginate: { itemsPerPage: 5, currentPage: p }">
-            <div #{item.id} [id]="user.id" class="item">
-              <a class="ui tiny image">
-                <img src="assets/imagens/avatar/stevie.jpg">
+            <div #n1 [id]="user.id" class="item">
+              <a [routerLink]="['/users/edit', user.id]" class="ui tiny image">
+                <img [src]="user.foto != '' ? user.foto : '/assets/imagens/avatar/user-profile-default.png' ">
               </a>
               <div class="content">
-                <a class="header">{{ user.nome }}</a>
+                <a [routerLink]="['/users/edit', user.id]" class="header">{{ user.nome }}</a>
                 <div class="description">
-                  <p [innerHTML]="users.description"></p>
-                </div>                 
-                <button class="ui icon button right floated negative" (click)="excluir(user.id, user.nome)">
-                 <i class="trash alternate icon"></i>
-                </button>  
-                <button class="ui icon button right floated teal" [routerLink]="['/users/edit', user.id]">
-                  <i class="edit outline icon"></i>
-                 </button>                                        
+                  <div class="ui grid">
+                    <div class="thirteen wide column">
+                      <p>{{user.email}} <br>  
+                        <span [innerHTML]="user.tipoUsuario"></span></p>                          
+                    </div>
+                    <div class="three wide column">
+                      <button class="ui icon button right floated negative" (click)="excluir(user.id, user.nome)">
+                        <i class="trash alternate icon"></i>
+                       </button>  
+                       <button class="ui icon button right floated teal" [routerLink]="['/users/edit', user.id]">
+                         <i class="edit outline icon"></i>
+                        </button>  
+                    </div>
+                  </div>                
+                </div>            
+                                                      
               </div>
               <hr>        
             </div>     

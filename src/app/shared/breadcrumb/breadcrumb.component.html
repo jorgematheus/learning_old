@@ -8,5 +8,10 @@
         <a [routerLink]="['/users']" class="section">Usuários</a>
         <i class="right chevron icon divider"></i>
         <div class="section active">Novo Usuário</div> 
+    </ng-template>  
+    <ng-template [ngIf]="paginaAtiva == '/users/edit'">
+        <a [routerLink]="['/users']" class="section">Usuários</a>
+        <i class="right chevron icon divider"></i>
+        <div class="section active">Editar Usuário</div> 
     </ng-template>      
 </div>

@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarUsuarioComponent {
 
+  public titulo: string = 'Editar Usuário';
+
   constructor() {  }  
+
   
-  
-   validarFormulario(event) {         
-    
+  validarFormulario(event) {    
     if(event != null) {
       console.log('form validado: ', event)
-    }
-        
+    }        
   }
 
 }

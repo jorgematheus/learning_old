@@ -1,3 +1,10 @@
-<p>
-  conteudo works!
-</p>
+<div class="ui container">
+  <div class="ui stackable two column grid geral">
+    <div class="sixteen wide column">
+      <app-breadcrumb [paginaAtiva]="'routeBreadcrumb'"></app-breadcrumb>
+    </div>      
+      <router-outlet></router-outlet>      
+    <button (click)="abrir()">ABRIR</button>
+    <p>{{ title }}</p>
+  </div>
+</div>

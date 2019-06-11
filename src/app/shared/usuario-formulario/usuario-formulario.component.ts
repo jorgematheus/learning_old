@@ -1,6 +1,9 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model';
+import { MustMatch } from 'src/app/helpers/must-match.validator';
+import { Routes, Router, ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuario-formulario',
@@ -10,12 +13,14 @@ import { Usuario } from '../../models/usuario.model';
 export class UsuarioFormularioComponent implements OnInit {
 
   public formUsuario: FormGroup; 
-  public imageSrc; 
+  public imageSrc;
+  
+  @Input('titulo') titulo: string;
   @Output() dadosUsuario: EventEmitter<Usuario> = new EventEmitter();
 
   constructor(protected fb: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.formUsuario = this.fb.group({
       foto: [''],
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -23,8 +28,10 @@ export class UsuarioFormularioComponent implements OnInit {
       celular: [''],
       dataNascimento: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      confirmarSenha: ['', [Validators.required, Validators.minLength(6)]],
+      confirmarSenha: ['', [Validators.required]],
       tipoUsuario: ['', [Validators.required]]
+    }, {
+      validator: MustMatch('senha', 'confirmarSenha')
     })
   }
 
