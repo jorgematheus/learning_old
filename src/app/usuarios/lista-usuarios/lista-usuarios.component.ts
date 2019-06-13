@@ -21,6 +21,7 @@ export class ListaUsuariosComponent implements OnInit, OnDestroy {
   public url = URL;
   public elementDelete;
   public idUsuario: number;
+  public p = null;
 
   collection = [];
   constructor(private testService: TestService, private notificacao: NotificacaoService) {

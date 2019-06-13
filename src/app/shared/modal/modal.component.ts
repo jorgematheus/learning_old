@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Input, OnChanges } from '@angular/core';
-import { ModalTemplate, SuiModalService, TemplateModalConfig, SuiModal, ComponentModalConfig, ModalSize } from 'ng2-semantic-ui';
+import { Component } from '@angular/core';
+import { SuiModal, ComponentModalConfig, ModalSize } from 'ng2-semantic-ui';
 
 interface IConfirmModalContext {
   title:string;

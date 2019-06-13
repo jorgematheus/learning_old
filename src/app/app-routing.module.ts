@@ -34,7 +34,7 @@ import { NovaTurmaComponent } from './conteudos/turmas/nova-turma/nova-turma.com
 import { EditarTurmaComponent } from './conteudos/turmas/editar-turma/editar-turma.component';
 
 const routes: Routes = [  
-  { path: '', component: HomeComponent },  
+  { path: '', component: LoginComponent },  
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UsuariosComponent,

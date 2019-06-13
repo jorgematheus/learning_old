@@ -51,6 +51,8 @@ import { ListaTurmasComponent } from './conteudos/turmas/lista-turmas/lista-turm
 import { NovaTurmaComponent } from './conteudos/turmas/nova-turma/nova-turma.component';
 import { EditarTurmaComponent } from './conteudos/turmas/editar-turma/editar-turma.component';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+export let opcoesMask: Partial<IConfig> | (() => Partial<IConfig>);
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -76,11 +78,11 @@ registerLocaleData(localePt, 'pt-BR');
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule, 
-    MatFormFieldModule ,
+    MatFormFieldModule,
     MatIconModule,
     MyDatePickerModule,
-    ToastrModule.forRoot()
-    
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(opcoesMask)    
   ], 
   entryComponents: [ModalComponent],
   providers: [NotificacaoService, TestService, { provide: LOCALE_ID, useValue: 'pt-BR' }],

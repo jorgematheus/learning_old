@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
-
 
 @Component({
   selector: 'app-login',
@@ -14,39 +12,50 @@ import { Location } from '@angular/common';
 export class LoginComponent implements OnInit, OnDestroy {
 
   @ViewChild('modal') public modal;
-
-  public form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    senha: new FormControl('', [Validators.required, Validators.minLength(6)])
-  })
+  //@ViewChild('botao') public botao: ElementRef;  
   
-  route: string;
+  public form: FormGroup;
 
-  constructor(private location: Location, private router: Router) { }
+  constructor(private location: Location, private router: Router, private fb: FormBuilder) {
 
-  ngOnInit() {  
+    this.form = fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha:['', [Validators.required, Validators.minLength(6)]]
+    });
+   }
+
+  ngOnInit() { }
+
+  //acesso facil aos controles do formulario
+  get f() { return this.form.controls }
+
+  public dismissed() {
+    this.router.navigate(['/home'])
     
   }
-
-  ngOnDestroy() {
-    //this.modal.dismissed()
-  }
-
-
+  
   public efetivarLogin(): void {
-    console.log(this.form)
+    console.log(this.form)    
 
-    let controls = this.form.controls;
-
-    controls.email.markAsTouched();
-    controls.senha.markAsTouched();      
+    this.f.email.markAsTouched();
+    this.f.senha.markAsTouched();      
 
     if(this.form.valid) {
-      console.log('validado')      
-    }     
+      console.log('validado');
 
-    this.router.navigate(['/home'])
+      //removendo o modal (usando propiedade privada  apenas no ultimo caso)
+      this.modal._element.nativeElement.remove();  
+      this.router.navigate(['/home'])    
+    }
 
+    this.isVisible = false;
+    console.log(this.isVisible)
   }
+
+  ngOnDestroy() {  
+    console.log()
+    this.dismissed()
+
+  } 
 
 }

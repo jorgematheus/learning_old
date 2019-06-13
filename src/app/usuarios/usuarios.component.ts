@@ -1,9 +1,11 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SuiModalService } from 'ng2-semantic-ui';
 import { TestService } from '../shared/test.service';
 import { ConfirmModal } from '../shared/modal/modal.component';
 import { RouterBreadcrumb } from '../helpers/router-breadcrumb';
+import { Subscription } from 'rxjs';
+
 
 
 export interface IContext {
@@ -16,27 +18,30 @@ export interface IContext {
   styleUrls: ['./usuarios.component.scss'],
   providers: [RouterBreadcrumb]
 })
-export class UsuariosComponent implements OnInit {    
+export class UsuariosComponent implements OnInit, OnDestroy {    
   public routeBreadcrumb: string;
   
   //variáveis para recuperar dados do usuário a ser excluído
   public id: number;
   public name: string;
+
+  private inscricao: Subscription;
  
   constructor( 
     private router: Router, 
     public modalService: SuiModalService,
     public testService: TestService,
     public RouterBreadcrumb: RouterBreadcrumb
-    ) 
-    {  
-      this.router.events.subscribe(() => {  
-        let url = this.router.url;
-        this.routeBreadcrumb = RouterBreadcrumb.getUrlBreadCrumb(url);
-      });
+    ) {  
+    
     }  
 
-    ngOnInit() { }
+    ngOnInit() { 
+      this.inscricao =  this.router.events.subscribe(() => {  
+        let url = this.router.url;
+        this.routeBreadcrumb = this.RouterBreadcrumb.getUrlBreadCrumb(url);
+      });
+    }
   
   public openModal() {         
     this.modalService
@@ -48,7 +53,7 @@ export class UsuariosComponent implements OnInit {
 
   //captura  o componente ativo no router-outlet
   onActivate(componentReference) {
-  console.log('Componente de referencia: ', componentReference)     
+    console.log('Componente de referencia: ', componentReference)     
     if(componentReference.excluirUsuario) {
       componentReference.excluirUsuario.subscribe((data) => {         
         this.id = data.id;
@@ -56,5 +61,9 @@ export class UsuariosComponent implements OnInit {
         this.openModal();         
       })
     }
+  }
+
+  ngOnDestroy() {
+    this.inscricao.unsubscribe();
   }
 }

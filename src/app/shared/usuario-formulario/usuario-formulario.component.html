@@ -30,7 +30,7 @@
       <div class="two fields">
         <div class="required field" [ngClass]="{ 'error': f.email.touched && f.email.errors }">
           <label for="email">E-mail</label>
-          <input type="text" id="email" placeholder="Digite seu E-mail" formControlName="email">
+          <input type="email" id="email" placeholder="Digite seu E-mail" formControlName="email">
           <div *ngIf="f.email.touched && f.email.errors" class="message-error">
             <div *ngIf="f.email.errors.required" >
               Campo e-mail é de preenchimento obrigatório!
@@ -42,7 +42,7 @@
         </div>
         <div class="field">
           <label for="celular">Celular</label>
-          <input type="text" id="celular" placeholder="Ex: (11) 91234-5678" formControlName="celular">        
+          <input type="text" id="celular" placeholder="Ex: (11) 91234-5678" mask="(00) 00000-0000" formControlName="celular">        
         </div>
       </div>    
       <div class="two fields">       

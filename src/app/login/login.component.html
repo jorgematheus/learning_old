@@ -1,40 +1,45 @@
-<div  class="ui container" #modalTemp>
-    <sui-modal *ngIf="1===3"  size="tiny" [isClosable]="false" (dismissed)="alert($event)" #modal>        
-        <div class="content">  
-                <h2 class="description-login ui teal image header">
-                    <i style=" font-size: 2.5rem !important;" class="graduation cap icon"></i>
-                        <!--<img src="assets/icons/graduation-cap-solid.svg" class="image">-->
-                        <div class="content">
-                          E-learning
+<div class="ui container" >
+    <div  #templateModal>
+        <sui-modal size="tiny" [isClosable]="false" #modal>        
+            <div class="content">  
+                    <h2 class="description-login ui teal image header">
+                        <i style=" font-size: 2.5rem !important;" class="graduation cap icon"></i>                        
+                        <div class="content"> E-learning </div>
+                    </h2>      
+                
+                <form class="ui form" [formGroup]="form" (ngSubmit)="efetivarLogin()">
+                    <div class="field" [ngClass]="{ 'error': f.email.touched && f.email.errors }">  
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>                  
+                            <input #teste data-login type="email" formControlName="email" placeholder="E-mail">
                         </div>
-                      </h2>              
-            
-            <form class="ui form" [formGroup]="form" (ngSubmit)="efetivarLogin()">
-                <div class="field">  
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>                  
-                        <input data-login type="text" formControlName="email" placeholder="E-mail">
+                       <div *ngIf="f.email.touched && f.email.errors" class="message-error">
+                          <div *ngIf="f.email.errors.required">
+                             Campo e-mail é obrigatório!  
+                          </div>
+                          <div *ngIf="f.email.errors.email">
+                            Digite um E-mail válido!
+                          </div>
+                       </div>
+                       <div> {{ teste.value }} </div>
                     </div>
-                    <div 
-                        *ngIf="!form.controls.email.valid && form.controls.email.touched" 
-                        class="ui pointing red basic label">
-                        Preencha um e-mail válido!
-                    </div>
-                </div>
-                <div class="field"> 
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input data-login type="password" formControlName="senha" placeholder="Senha">
-                    </div>                     
-                    <div 
-                        *ngIf="!form.controls.senha.valid && form.controls.senha.touched" 
-                        class="ui pointing red basic label">
-                        Campo Senha deve ter no mínimo 6 caracteres!
-                    </div>
-                </div>
-                <!--button [disabled]="!form.valid ? 'disabled' : ''" class="ui button" type="submit">Entrar</button-->
-                <button type="submit" class="ui fluid large teal button">Login</button>
-            </form>
-        </div>        
-    </sui-modal>
+                    <div class="field" [ngClass]="{ 'error': f.senha.touched && f.senha.errors }"> 
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input data-login type="password" formControlName="senha" placeholder="Senha">
+                        </div>                     
+                       <div *ngIf="f.senha.touched && f.senha.errors" class="message-error">
+                           <div *ngIf="f.senha.errors.required">
+                             Campo senha é obrigatório!
+                           </div>
+                           <div *ngIf="f.senha.errors.minlength">
+                              Sua senha deve conter no mínimo 6 caracteres!
+                           </div>
+                       </div>
+                    </div>                
+                    <button type="submit" #botao class="ui fluid large teal button">Login</button>
+                </form>
+            </div>        
+        </sui-modal>
+    </div>    
 </div>

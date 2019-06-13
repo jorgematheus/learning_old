@@ -2,8 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model';
 import { MustMatch } from 'src/app/helpers/must-match.validator';
-import { Routes, Router, ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-usuario-formulario',
@@ -14,7 +13,21 @@ export class UsuarioFormularioComponent implements OnInit {
 
   public formUsuario: FormGroup; 
   public imageSrc;
-  
+  private date = new Date();
+
+  //configurações do input data nascimento
+  public myDatePickerOptions  = {        
+        dateFormat: 'dd/mm/yyyy',
+        showTodayBtn: false,
+        editableDateField: false,
+        inline: false,
+        openSelectorOnInputClick: true,
+        disableSince: { 
+          year: this.date.getFullYear() - 1, 
+          month: this.date.getMonth(), 
+          day: this.date.getDate() }
+        
+    };
   @Input('titulo') titulo: string;
   @Output() dadosUsuario: EventEmitter<Usuario> = new EventEmitter();
 
